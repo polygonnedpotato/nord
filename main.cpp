@@ -6,7 +6,7 @@ class RES{
     string scn_00[2]={"\e[36m[?]Hey...\n[?]Hey!\n\e[1m[?]HEY!!!\n\e[0m\e[35m<You wake up suddenly.>\n<You look up and notice a larg dark figure. It speaks in a masculine voice...>\e[0m\e[36m\n[?]Come with me,\e[1m now\e[22m.\n\e[0m","\e[32m[1]O-Okay...\n\e[31m[2]Umm... No?\e[0m\n[3]Who are you?\n"};
     string scn_01[2]={"\e[36m[?]I'm the guy who's trying to save you. Now follow me!\n\e[0m","\e[32m[1]Okay\n\e[31m[2]No.\n\e[0m\e[2m[3]-----\n\e[0m"};
     string scn_02[2]={"\e[36m[?]Are you joking? Now is not the time for this! Especially considering that \e[1mthe sweep\e[22m is happening. Now come on!\e[0m\n","\e[32m[1]Okay...\n\e[0m[2]Wait what's 'the sweep'?\n[3]Who are you?\n"};
-    string scn_03[2]={"\e[35m<The dark figure pulls you up without patience.>\n<You find it hard to stabalize yourself on your feet.>\n<Without hesitation, the figure grabs ahold of your arm and pulls you along with itself.>\n<As the figure pulls you to an undisclosed location, you look around. Destrucion, fire, debris. it looks as if the entire place was severly bombed.>"};
+    string scn_03[2]={"\e[35m<The dark figure pulls you up without patience.>\n<You find it hard to stabalize yourself on your feet.>\n<Without hesitation, the figure grabs ahold of your arm and pulls you along with itself.>\n<As the figure pulls you to an undisclosed location, you look around. Destrucion, fire, debris. it looks as if the entire place was severly bombed.>\n<You feel light headed.>\n<You blackout.>\e[0m\n","\e[33m[1]Continue\e[0m\n\e[2m[2]-----\n[3]-----\e[0m\n"};
 };
 RES obj;
 int nord;
@@ -14,7 +14,7 @@ int currscne;
 bool keepGoing=true;
 void switchScene(int scn,int choice){
   switch(scn){
-    case 0:
+    case 0: //00
       switch(choice){
         case 1:
           currscne=3;
@@ -30,7 +30,7 @@ void switchScene(int scn,int choice){
           exit(EXIT_FAILURE);
       }
       break;
-    case 1:
+    case 1: //01
       switch(choice){
         case 1:
           currscne=3;
@@ -46,16 +46,33 @@ void switchScene(int scn,int choice){
           exit(EXIT_FAILURE);
       };
       break;
-    case 2:
+    case 2: //02
       switch(choice){
         case 1:
           currscne=3;
           break;
         case 2:
           currscne=3;
+          cout<<"\e[3m\e[35m<You try to ask the figure, but it appears that it had other plans.>\n\e[0m";
           break;
         case 3:
           currscne=1;
+          break;
+        default:
+          cerr<<obj.game_dat[3];
+          exit(EXIT_FAILURE);
+      }
+      break;
+    case 3: //03
+      switch(choice){
+        case 1:
+          currscne=4;
+          break;
+        case 2:
+          cout<<obj.game_dat[1];
+          break;
+        case 3:
+          cout<<obj.game_dat[1];
           break;
         default:
           cerr<<obj.game_dat[3];
@@ -69,14 +86,17 @@ void switchScene(int scn,int choice){
 };
 void printScene(int scn){
   switch(scn){
-    case 0:
+    case 0: //00
       cout<<obj.scn_00[0]<<obj.game_dat[0]<<obj.scn_00[1];
       break;
-    case 1:
+    case 1: //01
       cout<<obj.scn_01[0]<<obj.game_dat[0]<<obj.scn_01[1];
       break;
-    case 2:
+    case 2: //02
       cout<<obj.scn_02[0]<<obj.game_dat[0]<<obj.scn_02[1];
+      break;
+    case 3: //03
+      cout<<obj.scn_03[0]<<obj.game_dat[0]<<obj.scn_03[1];
       break;
     default:
       cerr<<obj.game_dat[2];
