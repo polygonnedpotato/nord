@@ -124,7 +124,7 @@ void printScene(int scn){
   };
 };
 int main() {
-  cout<<"█   █  ███  ████  ████\n██  █ █   █ █   █ █   █\n█ █ █ █   █ ████  █   █\n█  ██ █   █ █   █ █   █\n█   █  ███  █   █ ████\nBy Brendan Berger\nVersion 0.0\n\n\n";
+  cout<<"█   █  ███  ████  ████\n██  █ █   █ █   █ █   █\n█ █ █ █   █ ████  █   █\n█  ██ █   █ █   █ █   █\n█   █  ███  █   █ ████\nBy Discovery\nVersion 0.0\n\n\n";
   currscne=0;
   while(keepGoing){
     printScene(currscne);
